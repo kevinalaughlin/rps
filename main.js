@@ -15,9 +15,16 @@ function getComputerChoice(max) {
 }
 
 function getPlayerChoice(choice) {
-    choice = choice.at(0).toUpperCase() + choice.slice(1).toLowerCase();
-    return choice;
+    if (choice === null || choice === undefined) {
+        // If the choice is null or undefined, return an empty string or handle it accordingly
+        return ""; // You can also return some default value here if needed
+    } else {
+        // Convert the first letter to uppercase and the rest to lowercase
+        choice = choice.trim().charAt(0).toUpperCase() + choice.trim().slice(1).toLowerCase();
+        return choice;
+    }
 }
+
 
 function playRound(x,y) {
     if (x === y) {
@@ -41,7 +48,7 @@ function playGame() {
 
     for (let i = 0; i < 5; i++) {
         let computerSelection = getComputerChoice();
-        let playerSelection = getPlayerChoice("rock"); // Assuming player always chooses "rock"
+        let playerSelection = getPlayerChoice(prompt("Make your choice", "Rock, Paper, Scissors")); // Assuming player always chooses "rock"
         
         console.log("Computer chose " + computerSelection);
         console.log("Player chose " + playerSelection);
